@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OCR Data Collector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h3>Write the following Sinhala text as a <u>single line</u> in a piece of paper and upload a photo</h3>
+      <p>Only .jpg, .jpeg and .png files are accepted</p>
+      <div class="file-content" style="overflow:auto;font-size:1.2rem;">
+        <pre>{{ content }}</pre>
+      </div>
+      <form id="upload-form" enctype="multipart/form-data">
+        <input type="hidden" name="file_name" value="{{ file_name }}">
+        <input type="file" name="image" accept=".jpg,.jpeg,.png" required>
+        <button type="submit">Upload Image</button>
+        <div id="loader"></div>
+      </form>
+      <div id="upload-message"></div>
+      <hr style="margin: 30px 0;">
+      <h3 style="text-align: center;">Privacy Notice</h3> 
+      <p>This privacy notice explains how we collect, use, and protect any personal information you provide when using our handwritten text collection web app.</p>
+  
+      <h4>Information We Collect</h4>
+      <p>When you submit handwritten text images through our app, we collect and store those image files containing your handwriting samples. We do not collect any other personal information like your name, email, location etc.</p>
+  
+      <h4>How We Use Your Information</h4>
+      <p>The handwritten text images you submit are used to create datasets for training optical character recognition (OCR) systems. The images may be processed, augmented, annotated and combined into datasets. The resulting datasets could potentially be shared with researchers and organizations for OCR development purposes.</p>
+  
+      <h4>Data Retention</h4>
+      <p>We will retain the handwritten text images you submit for as long as needed to create and maintain OCR training datasets. Individual images may be retained indefinitely as part of these datasets.</p>
+  
+      <h4>Your Rights</h4>
+      <p>You have the right to request access to or deletion of any handwritten text images containing your personal information that we have collected through this app.</p>
+  
+      <h4>Contact Us</h4>
+      <p>If you have any questions about this privacy notice or our data practices, please contact us at <a href="mailto:gihantha.19@cse.mrt.ac.lk">gihantha.19@cse.mrt.ac.lk</a></p>
+  
+      <p>By providing your handwritten text samples through this app, you acknowledge that you have read and understand this privacy notice and consent to the collection, use and storage of your handwriting image data as described above.</p>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

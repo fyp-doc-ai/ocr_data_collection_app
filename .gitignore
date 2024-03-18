@@ -1,0 +1,5 @@
+flask_env/
+creds/
+gt-generation/__pycache__/
+gt-generation/gt/
+gt-generation/char_counts.pkl
