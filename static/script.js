@@ -2,7 +2,6 @@ document.getElementById('upload-form').addEventListener('submit', function(event
     event.preventDefault();
   
     const formData = new FormData(event.target);
-    const uploadMessage = document.getElementById('upload-message');
     const loader = document.getElementById('loader');
 
     // Show the loader
@@ -14,13 +13,10 @@ document.getElementById('upload-form').addEventListener('submit', function(event
     })
     .then(response => response.text())
     .then(data => {
-      uploadMessage.textContent = data;
-      setTimeout(() => {
-        uploadMessage.textContent = '';
-      }, 3000); // Clear the message after 3 seconds
+      appendAlert(data, 'success');
     })
     .catch(error => {
-      uploadMessage.textContent = 'Error uploading image';
+      appendAlert('Error uploading image', 'danger');
       console.error('Error:', error);
     })
     .finally(() => {
@@ -28,3 +24,15 @@ document.getElementById('upload-form').addEventListener('submit', function(event
       loader.style.display = 'none';
     });
   });
+
+const appendAlert = (message, type) => {
+  const wrapper = document.createElement('div')
+  const alertPlaceholder = document.getElementById('upload-message');
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible my-3" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+  alertPlaceholder.append(wrapper)
+}

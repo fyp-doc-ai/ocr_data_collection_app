@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.static_folder = 'static'
 
 # Initialize Google Drive and Cloud Storage clients
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'creds/credentials.json'
+# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'creds/credentials.json'
 
 drive_service = build('drive', 'v3')
 storage_client = storage.Client()
